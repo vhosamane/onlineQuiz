@@ -1,0 +1,24 @@
+.quizQuestionContainer {
+	padding: 10px;
+}
+
+.quizQuestionContainer ul {
+	padding: 0;
+	list-style: none;
+}
+
+.quizQuestionContainer ul  li{
+	padding: 10px 10px;
+	background: #f8f9fa;
+	margin-bottom: 2px;
+	cursor: pointer;
+}
+
+.quizQuestionContainer ul  li:hover {
+	background-color: rgb(221,217,217);
+
+}
+
+.quizQuestionContainer .quizQuestion1 {
+	margin-bottom: 10px;
+}

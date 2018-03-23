@@ -1,0 +1,23 @@
+<img src="../../../assets/images/quiz.jpg" />
+<div class="row">
+	<div class="col-lg-6">
+		<form [formGroup]="loginForm" (ngSubmit)= "loginForm.valid && register()">
+			<div class="form-group" [ngClass]="{ 'has-error': loginForm.controls['username'].touched && loginForm.controls['username'].invalid }">
+				<label for="username">UserName : </label>
+				<input type="text" class="form-control" id="username" formControlName="username" />
+				<span *ngIf="loginForm.controls['username'].touched && loginForm.controls['username'].invalid && loginForm.controls['username'].errors.required" class="help-block">UserName Required</span>
+				<span *ngIf="loginForm.controls['username'].touched && loginForm.controls['username'].invalid && loginForm.controls['username'].errors.minlength" class="help-block">Min length should be 6</span>
+			</div>
+			
+			<div class="form-group" [ngClass]="{'has-error': loginForm.controls['email'].touched && loginForm.controls['email'].invalid }">
+				<label for="email">Email : </label>
+				<input type="email" class="form-control" id="email" formControlName="email"/>
+				<span *ngIf="loginForm.controls['email'].touched && loginForm.controls['email'].invalid && loginForm.controls['email'].errors.required" class="help-block">Email Required</span>
+				<span *ngIf="loginForm.controls['email'].touched && loginForm.controls['email'].invalid && loginForm.controls['email'].errors.email" class="help-block">Email not in format</span>
+			</div>
+			
+			<button type="submit" class="btn btn-primary">Login</button>
+		</form>
+	</div>
+</div>
+

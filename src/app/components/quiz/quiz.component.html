@@ -1,0 +1,54 @@
+<app-navbar></app-navbar>
+<div class="row" style="margin-top: 20px;" *ngIf="instructionShow">
+	<div class="col-lg-12">
+		<div class="card">
+			<div class="card-header">Instruction Before Start Test</div>
+			<div class="card-body">
+				<ul>
+					<li> Total 10 questions </li>
+					<li> Total time is 10 minutes </li>
+					<li> Each correct answer gain one point </li>
+					<li> There is no negative point </li>
+					<li> Immediately you can see the result. </li>
+				</ul>
+			</div>
+			<div class="card-footer">
+				<button class="btn btn-primary" (click)="startQuiz()">Start</button>
+				<button class="btn btn-primary" (click)="stopQuiz()">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="QuizContainer" *ngIf="QuizContainershow" style="margin-top: 20px;">
+	<div class="card">
+		<div class="card-header">
+			Time Elapsed : {{displayTime()}}
+		</div>
+	</div>
+	
+	<div style="margin-top: 20px;">
+		{{questionProgress + 1}} of {{quizQuestion.length}}
+	</div>
+	
+	<div class="progress" style="margin-top: 20px;">
+		<div class="progress-bar" [style.width.%] = "(questionProgress + 1)*20"></div>
+	</div>
+	
+	<div class="card" style="margin-top: 20px;">
+		<div class="quizQuestionContainer">
+			<div class="quizQuestion1">
+				<span>{{questionProgress + 1}} . </span>
+				<span>{{quizQuestion[questionProgress].Question}}</span>
+			</div>
+			<ul>
+				<ng-container *ngFor="let opt of quizQuestion[questionProgress].options; let i = index">
+					<li (click)="answer(quizQuestion[questionProgress].Qid, i)"> 
+						{{opt}}
+					</li>
+				</ng-container>
+			</ul>
+		</div>
+	</div>
+</div>
+

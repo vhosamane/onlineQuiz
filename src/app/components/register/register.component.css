@@ -1,0 +1,7 @@
+.has-error {
+	color: red;
+}
+
+.has-error .form-control {
+	border: 1px solid red !important;
+}

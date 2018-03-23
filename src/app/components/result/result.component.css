@@ -1,0 +1,31 @@
+.quizQuestionContainer ul {
+	padding: 0;
+	list-style: none;
+}
+
+.quizQuestionContainer ul  li{
+	padding: 10px 10px;
+	background: #f8f9fa;
+	margin-bottom: 2px;
+	cursor: pointer;
+}
+
+.quizQuestionContainer ul  li:hover {
+	background-color: rgb(221,217,217);
+
+}
+
+.quizQuestionContainer .quizQuestion1 {
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+
+.text-green {
+	color: rgb(44,190,24);
+	float: right;
+}
+
+.text-red {
+	color: rgb(247,7,7);
+	float: right;
+}
