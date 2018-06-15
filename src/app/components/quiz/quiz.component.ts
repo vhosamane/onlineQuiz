@@ -9,12 +9,14 @@ import { QuizService } from './../../shared/quiz.service';
 })
 
 export class QuizComponent implements OnInit {
+	interval: any;
 	timer: number = 0;
 	seconds: number = 0;
 	questionProgress: number = 0;
 	quizQuestion: any;
 	instructionShow: boolean = true;
 	QuizContainershow: boolean = false;
+	reviewAndconfirmation: boolean = false;
 	
 	constructor(private router: Router, private quizService: QuizService) { }
 
@@ -25,7 +27,7 @@ export class QuizComponent implements OnInit {
 	startQuiz() {
 		this.instructionShow = false;
 		this.QuizContainershow = true;
-		this.startTimer();
+		this.interval = this.startTimer();
 		this.quizQuestion = this.quizService.getQuestion();
 	}
 	
@@ -37,7 +39,6 @@ export class QuizComponent implements OnInit {
 	startTimer() {
 		this.timer = setInterval( () => {
 			this.seconds++;
-			localStorage.setItem('seconds', this.seconds.toString());
 		}, 1000);
 	}
 	
@@ -52,8 +53,23 @@ export class QuizComponent implements OnInit {
 		
 		if(this.questionProgress == 5) {
 			sessionStorage.setItem('questionAnswer', JSON.stringify(this.quizQuestion));
-			clearInterval(this.startTimer);
-			this.router.navigate(['/result']);
+			clearInterval(this.interval);
+			//this.router.navigate(['/result']);
+			this.instructionShow = false;
+			this.QuizContainershow = false;
+			this.reviewAndconfirmation = true;
 		}
+	}
+	
+	editQuiz() {
+		this.instructionShow = false;
+		this.QuizContainershow = true;
+		this.reviewAndconfirmation = false;
+		this.questionProgress = 0;
+	}
+	
+	submitQuiz() {
+		clearInterval(this.interval);
+		this.router.navigate(['/result']);
 	}
 }

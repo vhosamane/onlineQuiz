@@ -16,12 +16,12 @@ export class ResultComponent implements OnInit {
 	constructor(private router: Router, private quizService: QuizService) { }
 
 	ngOnInit() {
-		this.getUser();
-		this.question();
+		this.getUserDetails();
+		this.questions();
 		this.getResult();
 	}
 	
-	question() {
+	questions() {
 		this.question = JSON.parse(sessionStorage.getItem('questionAnswer'));
 	}
 	
@@ -29,7 +29,8 @@ export class ResultComponent implements OnInit {
 		this.result = this.quizService.getResultServices();
 	}
 	
-	getUser() {
+	getUserDetails() {
+		debugger;
 		let name = JSON.parse(localStorage.getItem('user'));
 		this.user = name.username;
 	}
